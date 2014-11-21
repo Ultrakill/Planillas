@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings persistenceUnitName="DEFAULT_PU" id="_14150356077411" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:ns4="http://nbmodeler.java.net" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:package>com.proyecto.beans</jpa:package>
+    <jpa:entity class="TipoContrato" minimized="false" id="_1415035623312">
+        <jpa:table name="tipo_contrato"/>
+        <jpa:attributes>
+            <jpa:id name="codigo" attribute-type="String" id="_141503583776237">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_14150356519285">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="abreviatura" attribute-type="String" id="_141503590732869">
+                <jpa:column name="abreviatura" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="vigente" attribute-type="Boolean" id="_141503590840470">
+                <jpa:column name="vigente" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="contratoList" target-entity="Contrato" mapped-by="tipoContrato" collection-type="java.util.Collection" connected-entity-id="_1415036740460" connected-attribute-id="_1415395251934105" id="_1415395251934106">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="TipoPago" minimized="false" id="_1415036031241">
+        <jpa:table name="tipo_pago"/>
+        <jpa:attributes>
+            <jpa:id name="codigo" attribute-type="String" id="_1415036042609103">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_1415036050738104">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="contratoList" target-entity="Contrato" mapped-by="tipoPago" collection-type="java.util.Collection" connected-entity-id="_1415036740460" connected-attribute-id="_1415037185138185" id="_1415037185138186">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="MotivoBajaTrabajador" minimized="false" id="_1415036064146">
+        <jpa:table name="baja_trabajador"/>
+        <jpa:attributes>
+            <jpa:id name="codigo" attribute-type="String" id="_1415036123583107">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_1415036124925108">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="abreviatura" attribute-type="String" id="_1415036125299109">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="contratoList" target-entity="Contrato" mapped-by="motivoBajaTrabajador" collection-type="java.util.Collection" connected-entity-id="_1415036740460" connected-attribute-id="_1415037220202187" id="_1415037220202188">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="PeriodoTipoTrabajador" minimized="false" id="_1415036185670">
+        <jpa:table name="periodo_tipo_trabajador"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_1415036192817112">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_1415036193503113">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="vigente" attribute-type="Boolean" id="_1415036194550118">
+                <jpa:column name="vigente" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="fechaInicio" attribute-type="java.util.Date" id="_1415036583153128">
+                <jpa:column name="fecha_inicio" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="fechaFin" attribute-type="java.util.Date" id="_1415036583622129">
+                <jpa:column name="fecha_fin" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="tipoTrabajador" target-entity="TipoTrabajador" optional="true" primaryKey="false" connected-entity-id="_1415061799708" connected-attribute-id="_141506212116242" id="_141506212115841">
+                <jpa:join-column name="tipo_trabajador_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="contrato" target-entity="Contrato" optional="true" primaryKey="false" connected-entity-id="_1415036740460" connected-attribute-id="_141597992058026" id="_141597992058025">
+                <jpa:join-column name="contrato_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="PeriodoRegimenPension" minimized="false" id="_1415036329626">
+        <jpa:table name="periodo_regimen_pensionario"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_1415036337379121">
+                <jpa:column name="id" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_1415036338018122">
+                <jpa:column name="nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="fechaInicio" attribute-type="java.util.Date" id="_1415036644044130">
+                <jpa:column name="fecha_inicio" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="fechaFin" attribute-type="java.util.Date" id="_1415036644606131">
+                <jpa:column name="fecha_fin" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="vigente" attribute-type="Boolean" id="_141539054219926">
+                <jpa:column name="vigente" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="regimenPensionario" target-entity="RegimenPensionario" optional="true" primaryKey="false" connected-entity-id="_1415061556778" connected-attribute-id="_141506258605244" id="_141506258604543">
+                <jpa:join-column name="regimen_pension_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="contrato" target-entity="Contrato" optional="true" primaryKey="false" connected-entity-id="_1415036740460" connected-attribute-id="_141597999360228" id="_141597999358627">
+                <jpa:join-column name="contrato_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="PeriodoRegimenSalud" minimized="false" id="_1415036688797">
+        <jpa:table name="p_regimen_salud"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_1415036696302133">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_1415036696754134">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="fechaInicio" attribute-type="java.util.Date" id="_1415036697331137">
+                <jpa:column name="fecha_inicio" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="fechaFin" attribute-type="java.util.Date" id="_1415036698876138">
+                <jpa:column name="fecha_fin" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="vigente" attribute-type="Boolean" id="_141539060445528">
+                <jpa:column name="vigente" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="regimenAseguramiento" target-entity="RegimenAseguramiento" optional="true" primaryKey="false" connected-entity-id="_1415060714798" connected-attribute-id="_1415347774532204" id="_1415347774532203">
+                <jpa:join-column name="regimen_aseguramiento_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="contrato" target-entity="Contrato" optional="true" primaryKey="false" connected-entity-id="_1415036740460" connected-attribute-id="_141598003303630" id="_141598003303629">
+                <jpa:join-column name="contrato_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Contrato" minimized="false" id="_1415036740460">
+        <jpa:table name="contrato"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_1415036755786140">
+                <jpa:column name="id" unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="sueldoBase" attribute-type="Double" id="_1415036786214141">
+                <jpa:column name="sueldo_base" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="fechaInicio" attribute-type="java.util.Date" id="_1415036786386142">
+                <jpa:column name="fecha_inicio" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="fechaFin" attribute-type="java.util.Date" id="_1415036786589143">
+                <jpa:column name="fecha_fin" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="periodicidad" attribute-type="String" id="_1415036786729144">
+                <jpa:column name="periodicidad" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="vida" attribute-type="Boolean" id="_1415036786916145">
+                <jpa:column name="vida" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="asignacionFam" attribute-type="Boolean" id="_1415036833913146">
+                <jpa:column name="asignacion_fam" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="vigente" attribute-type="Boolean" id="_1415036834116147">
+                <jpa:column name="vigente" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="tipoPago" target-entity="TipoPago" optional="false" primaryKey="false" connected-entity-id="_1415036031241" connected-attribute-id="_1415037185138186" id="_1415037185138185">
+                <jpa:join-column name="tipo_pago_id" referenced-column-name="codigo" unique="false" nullable="false" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="motivoBajaTrabajador" target-entity="MotivoBajaTrabajador" optional="true" primaryKey="false" connected-entity-id="_1415036064146" connected-attribute-id="_1415037220202188" id="_1415037220202187">
+                <jpa:join-column name="motivo_baja_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="empleado" target-entity="Empleado" optional="true" primaryKey="false" connected-entity-id="_1415037782473" connected-attribute-id="_1415344190850107" id="_1415344190850106">
+                <jpa:join-column name="empleado_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="tipoContrato" target-entity="TipoContrato" optional="true" primaryKey="false" connected-entity-id="_1415035623312" connected-attribute-id="_1415395251934106" id="_1415395251934105">
+                <jpa:join-column name="tipo_contrato_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="periodoTipoTrabajadorList" target-entity="PeriodoTipoTrabajador" mapped-by="contrato" collection-type="java.util.Collection" connected-entity-id="_1415036185670" connected-attribute-id="_141597992058025" id="_141597992058026">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+            <jpa:one-to-many name="periodoRegimenPensionList" target-entity="PeriodoRegimenPension" mapped-by="contrato" collection-type="java.util.Collection" connected-entity-id="_1415036329626" connected-attribute-id="_141597999358627" id="_141597999360228">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+            <jpa:one-to-many name="periodoRegimenSaludList" target-entity="PeriodoRegimenSalud" mapped-by="contrato" collection-type="java.util.Collection" connected-entity-id="_1415036688797" connected-attribute-id="_141598003303629" id="_141598003303630">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+            <jpa:one-to-many name="detallePlanilla" target-entity="DetallePlanilla" mapped-by="contrato" collection-type="java.util.Collection" connected-entity-id="_1415986785010" connected-attribute-id="_141601251937436" id="_141601251938037">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Empleado" minimized="false" id="_1415037782473">
+        <jpa:table name="empleado"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_1415037789890196">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_1415037790516197">
+                <jpa:column name="nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="apellidoPaterno" attribute-type="String" id="_141522902739625">
+                <jpa:column name="apellido_paterno" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="apellidoMaterno" attribute-type="String" id="_141522902774326">
+                <jpa:column name="apellido_materno" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="contrato" target-entity="Contrato" mapped-by="empleado" collection-type="java.util.Collection" connected-entity-id="_1415036740460" connected-attribute-id="_1415344190850106" id="_1415344190850107">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="RegimenAseguramiento" minimized="false" id="_1415060714798">
+        <jpa:table name="regimen_aseguramiento"/>
+        <jpa:attributes>
+            <jpa:id name="codigo" attribute-type="String" id="_141506072902120">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_141506072959621">
+                <jpa:column name="nombre" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="abreviatura" optional="false" attribute-type="String" id="_141506072993322">
+                <jpa:column name="abreviatura" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="periodoRegimenSaludList" target-entity="PeriodoRegimenSalud" mapped-by="regimenAseguramiento" collection-type="java.util.Collection" connected-entity-id="_1415036688797" connected-attribute-id="_1415347774532203" id="_1415347774532204">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="RegimenPensionario" minimized="false" id="_1415061556778">
+        <jpa:table name="regimen_pensionario"/>
+        <jpa:attributes>
+            <jpa:id name="codigo" attribute-type="String" id="_141506158242529">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="descripcion" attribute-type="String" id="_141506158309730">
+                <jpa:column name="descripcion" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="sectorPublico" attribute-type="String" id="_141506158329731">
+                <jpa:column name="sector_publico" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="sectorPrivado" attribute-type="String" id="_141506158351432">
+                <jpa:column name="sector_privado" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="otraEntidad" attribute-type="String" id="_141506158372933">
+                <jpa:column name="otra_entidad" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="abreviatura" attribute-type="String" id="_141539057217327">
+                <jpa:column name="abreviatura" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="periodoRegimenPensionList" target-entity="PeriodoRegimenPension" mapped-by="regimenPensionario" collection-type="java.util.Collection" connected-entity-id="_1415036329626" connected-attribute-id="_141506258604543" id="_141506258605244">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+            <jpa:one-to-many name="porcentajeAFPList" target-entity="PorcentajeAFP" mapped-by="regimenPensionario" collection-type="java.util.Collection" connected-entity-id="_1415984257466" connected-attribute-id="_141600673973340" id="_141600673973741">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="TipoTrabajador" minimized="false" id="_1415061799708">
+        <jpa:table name="tipo_trabajador"/>
+        <jpa:attributes>
+            <jpa:id name="codigo" attribute-type="String" id="_141506182025236">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="descripcion" attribute-type="String" id="_141506182076937">
+                <jpa:column name="descripcion" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="sectorPublico" attribute-type="String" id="_141506182107138">
+                <jpa:column name="sector_publico" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="sectorPrivado" attribute-type="String" id="_141506182124039">
+                <jpa:column name="sector_privado" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="otraEntidad" attribute-type="String" id="_141506182139640">
+                <jpa:column name="otra_entidad" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="abreviatura" attribute-type="String" id="_141539049125925">
+                <jpa:column name="abreviatura" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="periodoTipoTrabajadorList" target-entity="PeriodoTipoTrabajador" mapped-by="tipoTrabajador" collection-type="java.util.Collection" connected-entity-id="_1415036185670" connected-attribute-id="_141506212115841" id="_141506212116242">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="PorcentajeAFP" minimized="false" id="_1415984257466">
+        <jpa:table name="porcentaje_AFP"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_141598467829933">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="periodo" attribute-type="java.util.Date" id="_141598467886134">
+                <jpa:column name="periodo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="fondoPension" attribute-type="Double" id="_141598467923835">
+                <jpa:column name="fondo_pension" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="seguroInvalidez" attribute-type="Double" id="_141598467953436">
+                <jpa:column name="seguro_invalidez" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="comisionRemFlujo" attribute-type="Double" id="_141598467980037">
+                <jpa:column name="comision_rem_flujo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="comisionRemMixta" attribute-type="Double" id="_141598468006638">
+                <jpa:column name="comision_rem_mixta" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="topePrima" attribute-type="Double" id="_141598468030039">
+                <jpa:column name="tope_prima" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="regimenPensionario" target-entity="RegimenPensionario" optional="true" primaryKey="false" connected-entity-id="_1415061556778" connected-attribute-id="_141600673973741" id="_141600673973340">
+                <jpa:join-column name="regimen_pensionario_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="detallePlanillaList" target-entity="DetallePlanilla" mapped-by="porcentajeAFP" collection-type="java.util.Collection" connected-entity-id="_1415986785010" connected-attribute-id="_141598731799066" id="_141598731799067">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Planilla" minimized="false" id="_1415986447186">
+        <jpa:table name="planilla"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_141598645204642">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="fechaInicial" attribute-type="java.util.Date" id="_141598645461143">
+                <jpa:column name="fecha_inicial" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="fechaFinal" attribute-type="java.util.Date" id="_141598645483044">
+                <jpa:column name="fecha_final" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="fechaPago" attribute-type="java.util.Date" id="_141598645505045">
+                <jpa:column name="fecha_pago" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="periodo" attribute-type="java.util.Date" id="_141598645526846">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="montoAsigFamiliar" attribute-type="Double" id="_141598645544247">
+                <jpa:column name="monto_asig_fam" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="montoEsSaludVida" attribute-type="Double" id="_141598645562948">
+                <jpa:column name="monto_essalud_vida" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="montoEsSalud" attribute-type="Double" id="_141598645585049">
+                <jpa:column name="monto_essalud" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="montoOnp" attribute-type="Double" id="_141598668595350">
+                <jpa:column name="monto_onp" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="estado" attribute-type="String" id="_141598668658251">
+                <jpa:column name="estado" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="eliminado" attribute-type="String" id="_141598668697252">
+                <jpa:column name="eliminado" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="tipoPlanilla" attribute-type="String" id="_141598668716253">
+                <jpa:column name="tipo_planilla" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="detallePlanillaList" target-entity="DetallePlanilla" mapped-by="planilla" collection-type="java.util.Collection" connected-entity-id="_1415986785010" connected-attribute-id="_141598730528364" id="_141598730528365">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="DetallePlanilla" minimized="false" id="_1415986785010">
+        <jpa:table name="detalle_planilla"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_141598683636355">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="eliminado" attribute-type="String" id="_141598683711756">
+                <jpa:column name="eliminado" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="diasLab" attribute-type="Integer" id="_141598683739757">
+                <jpa:column name="dias_lab" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="diasNoLab" attribute-type="Integer" id="_141598683764858">
+                <jpa:column name="dias_no_lab" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="diasSubsidiados" attribute-type="Integer" id="_141598683815159">
+                <jpa:column name="dias_subsidiados" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="planilla" target-entity="Planilla" optional="true" primaryKey="false" connected-entity-id="_1415986447186" connected-attribute-id="_141598730528365" id="_141598730528364">
+                <jpa:join-column name="planilla_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="porcentajeAFP" target-entity="PorcentajeAFP" optional="true" primaryKey="false" connected-entity-id="_1415984257466" connected-attribute-id="_141598731799067" id="_141598731799066">
+                <jpa:join-column name="porcentajeAFP_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="contrato" target-entity="Contrato" optional="true" primaryKey="false" connected-entity-id="_1415036740460" connected-attribute-id="_141601251938037" id="_141601251937436">
+                <jpa:join-column name="contratos_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="reservaConceptoList" target-entity="ReservaConcepto" mapped-by="detallePlanilla" collection-type="java.util.Collection" connected-entity-id="_1415988577276" connected-attribute-id="_141598868172288" id="_141598868172289">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Concepto" minimized="false" id="_1415987424761">
+        <jpa:table name="concepto"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_141625733636437">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" id="_141598745097470">
+                <jpa:column name="nombre" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="abreviatura" attribute-type="String" id="_141598745137071">
+                <jpa:column name="abreviatura" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="descripcion" attribute-type="String" id="_141598745176072">
+                <jpa:column name="descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="tipo" attribute-type="String" id="_141598745219973">
+                <jpa:column name="tipo" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="columnaBoleta" attribute-type="String" id="_141598745259374">
+                <jpa:column name="columna_boleta" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="orden" attribute-type="Integer" id="_141598745300175">
+                <jpa:column name="orden" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaRemComp" attribute-type="Boolean" id="_141598745344276">
+                <jpa:column name="afecta_rem_comp" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaPlame" attribute-type="Boolean" id="_141598745383677">
+                <jpa:column name="afecta_plame" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="eliminado" attribute-type="Boolean" id="_141598767018678">
+                <jpa:column name="eliminado" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="conceptoAsociado" target-entity="Concepto" optional="true" primaryKey="false" connected-entity-id="_1415987424761" id="_141625388797173">
+                <jpa:join-column name="concepto_asociado" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="reservaConceptoList" target-entity="ReservaConcepto" mapped-by="concepto" collection-type="java.util.Collection" connected-entity-id="_1415988577276" connected-attribute-id="_141598867170486" id="_141598867170487">
+                <jpa:join-table/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="ReservaConcepto" minimized="false" id="_1415988577276">
+        <jpa:table name="reserva_concepto"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="Long" id="_141598859352580">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+            </jpa:id>
+            <jpa:basic name="monto" attribute-type="Double" id="_141598859400981">
+                <jpa:column name="monto" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="eliminado" attribute-type="String" id="_141598859431982">
+                <jpa:column name="eliminado" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="concepto" target-entity="Concepto" optional="true" primaryKey="false" connected-entity-id="_1415987424761" connected-attribute-id="_141598867170487" id="_141598867170486">
+                <jpa:join-column name="concepto_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="detallePlanilla" target-entity="DetallePlanilla" optional="true" primaryKey="false" connected-entity-id="_1415986785010" connected-attribute-id="_141598868172289" id="_141598868172288">
+                <jpa:join-column name="detalle_planilla_id" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="TipoMovimiento" minimized="false" id="_1416424235294">
+        <jpa:table name="tipo_movimiento"/>
+        <jpa:attributes>
+            <jpa:id name="id1" attribute-type="Long" id="_141642424503638"/>
+            <jpa:basic name="attribute1" attribute-type="String" id="_141642424578239"/>
+            <jpa:basic name="attribute2" attribute-type="String" id="_141642424628240"/>
+            <jpa:basic name="attribute3" attribute-type="String" id="_141642424661241"/>
+            <jpa:one-to-many name="movimiento1" target-entity="Movimiento" mapped-by="tipoMovimiento1" connected-entity-id="_1416425329603" connected-attribute-id="_141642536492047" id="_141642536492048"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Movimiento" minimized="false" id="_1416425329603">
+        <jpa:table name="movimiento"/>
+        <jpa:attributes>
+            <jpa:id name="id1" attribute-type="Long" id="_141642535071243">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:id>
+            <jpa:basic name="attribute1" attribute-type="String" id="_141642535125944"/>
+            <jpa:basic name="attribute2" attribute-type="String" id="_141642535143245"/>
+            <jpa:basic name="attribute3" attribute-type="String" id="_141642535162746"/>
+            <jpa:many-to-one name="tipoMovimiento1" target-entity="TipoMovimiento" optional="true" primaryKey="false" connected-entity-id="_1416424235294" connected-attribute-id="_141642536492048" id="_141642536492047">
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_14150356077412">
+        <plane elementRef="_14150356077411" id="_14150356077413_p">
+            <shape elementRef="_1415035623312" id="_1415035623312_gui">
+                <Bounds x="19.0" y="-113.0" width="189.0" height="158.0"/>
+            </shape>
+            <shape elementRef="_1415036031241" id="_1415036031241_gui">
+                <Bounds x="781.0" y="86.0" width="162.0" height="118.0"/>
+            </shape>
+            <shape elementRef="_1415036064146" id="_1415036064146_gui">
+                <Bounds x="691.0" y="245.0" width="252.0" height="138.0"/>
+            </shape>
+            <shape elementRef="_1415036185670" id="_1415036185670_gui">
+                <Bounds x="19.0" y="86.0" width="259.0" height="198.0"/>
+            </shape>
+            <shape elementRef="_1415036329626" id="_1415036329626_gui">
+                <Bounds x="46.0" y="349.0" width="269.0" height="198.0"/>
+            </shape>
+            <shape elementRef="_1415036688797" id="_1415036688797_gui">
+                <Bounds x="387.0" y="361.0" width="252.0" height="198.0"/>
+            </shape>
+            <shape elementRef="_1415036740460" id="_1415036740460_gui">
+                <Bounds x="390.0" y="-113.0" width="230.0" height="378.0"/>
+            </shape>
+            <shape elementRef="_1415037782473" id="_1415037782473_gui">
+                <Bounds x="778.0" y="-113.0" width="165.0" height="158.0"/>
+            </shape>
+            <shape elementRef="_1415060714798" id="_1415060714798_gui">
+                <Bounds x="681.0" y="424.0" width="265.0" height="138.0"/>
+            </shape>
+            <shape elementRef="_1415061556778" id="_1415061556778_gui">
+                <Bounds x="-255.0" y="349.0" width="242.0" height="218.0"/>
+            </shape>
+            <shape elementRef="_1415061799708" id="_1415061799708_gui">
+                <Bounds x="-255.0" y="108.0" width="220.0" height="198.0"/>
+            </shape>
+            <shape elementRef="_1415984257466" id="_1415984257466_gui">
+                <Bounds x="210.0" y="-474.0" width="199.0" height="238.0"/>
+            </shape>
+            <shape elementRef="_1415986447186" id="_1415986447186_gui">
+                <Bounds x="-107.0" y="-694.0" width="167.0" height="318.0"/>
+            </shape>
+            <shape elementRef="_1415986785010" id="_1415986785010_gui">
+                <Bounds x="505.0" y="-453.0" width="199.0" height="238.0"/>
+            </shape>
+            <shape elementRef="_1415987424761" id="_1415987424761_gui">
+                <Bounds x="210.0" y="-838.0" width="185.0" height="298.0"/>
+            </shape>
+            <shape elementRef="_1415988577276" id="_1415988577276_gui">
+                <Bounds x="484.0" y="-838.0" width="220.0" height="158.0"/>
+            </shape>
+            <shape elementRef="_1416424235294" id="_1416424235294_gui">
+                <Bounds x="745.0" y="-804.0" width="207.0" height="158.0"/>
+            </shape>
+            <shape elementRef="_1416425329603" id="_1416425329603_gui">
+                <Bounds x="745.0" y="-569.0" width="177.0" height="158.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
