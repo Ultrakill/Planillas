@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -14,81 +15,53 @@ import javax.persistence.Table;
 public  class TipoMovimiento implements Serializable {
 
 
+    @Column(name="codigo",nullable=false)
     @Id
-    private Long id1;
+    private String codigo;
 
 
-    @OneToMany(targetEntity=Movimiento.class,mappedBy="tipoMovimiento1")
-    private Collection<Movimiento> movimiento1;
-
-
+    @Column(name="descripcion")
     @Basic
-    private String attribute1;
+    private String descripcion;
 
 
-    @Basic
-    private String attribute2;
-
-
-    @Basic
-    private String attribute3;
+    @OneToMany(targetEntity=Movimiento.class,mappedBy="tipoMovimiento")
+    private Collection<Movimiento> movimientoList;
 
     public TipoMovimiento(){
 
     }
 
 
-   public Long getId1() {
-        return this.id1;
+   public String getCodigo() {
+        return this.codigo;
     }
 
 
-  public void setId1 (Long id1) {
-        this.id1 = id1;
-    }
-
-
-
-   public Collection<Movimiento> getMovimiento1() {
-        return this.movimiento1;
-    }
-
-
-  public void setMovimiento1 (Collection<Movimiento> movimiento1) {
-        this.movimiento1 = movimiento1;
+  public void setCodigo (String codigo) {
+        this.codigo = codigo;
     }
 
 
 
-   public String getAttribute1() {
-        return this.attribute1;
+   public String getDescripcion() {
+        return this.descripcion;
     }
 
 
-  public void setAttribute1 (String attribute1) {
-        this.attribute1 = attribute1;
-    }
-
-
-
-   public String getAttribute2() {
-        return this.attribute2;
-    }
-
-
-  public void setAttribute2 (String attribute2) {
-        this.attribute2 = attribute2;
+  public void setDescripcion (String descripcion) {
+        this.descripcion = descripcion;
     }
 
 
 
-   public String getAttribute3() {
-        return this.attribute3;
+   public Collection<Movimiento> getMovimientoList() {
+        return this.movimientoList;
     }
 
 
-  public void setAttribute3 (String attribute3) {
-        this.attribute3 = attribute3;
+  public void setMovimientoList (Collection<Movimiento> movimientoList) {
+        this.movimientoList = movimientoList;
     }
 
 }

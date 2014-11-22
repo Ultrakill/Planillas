@@ -462,6 +462,10 @@
                 <jpa:join-column name="concepto_asociado" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
                 <jpa:join-table/>
             </jpa:many-to-one>
+            <jpa:many-to-one name="movimiento" target-entity="Movimiento" optional="true" primaryKey="false" connected-entity-id="_1416425329603" connected-attribute-id="_141661171616748" id="_141661171615747">
+                <jpa:join-column name="movimiento_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
             <jpa:one-to-many name="reservaConceptoList" target-entity="ReservaConcepto" mapped-by="concepto" collection-type="java.util.Collection" connected-entity-id="_1415988577276" connected-attribute-id="_141598867170486" id="_141598867170487">
                 <jpa:join-table/>
             </jpa:one-to-many>
@@ -493,82 +497,113 @@
     <jpa:entity class="TipoMovimiento" minimized="false" id="_1416424235294">
         <jpa:table name="tipo_movimiento"/>
         <jpa:attributes>
-            <jpa:id name="id1" attribute-type="Long" id="_141642424503638"/>
-            <jpa:basic name="attribute1" attribute-type="String" id="_141642424578239"/>
-            <jpa:basic name="attribute2" attribute-type="String" id="_141642424628240"/>
-            <jpa:basic name="attribute3" attribute-type="String" id="_141642424661241"/>
-            <jpa:one-to-many name="movimiento1" target-entity="Movimiento" mapped-by="tipoMovimiento1" connected-entity-id="_1416425329603" connected-attribute-id="_141642536492047" id="_141642536492048"/>
+            <jpa:id name="codigo" attribute-type="String" id="_141642424503638">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
+            </jpa:id>
+            <jpa:basic name="descripcion" attribute-type="String" id="_141642424578239">
+                <jpa:column name="descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:one-to-many name="movimientoList" target-entity="Movimiento" mapped-by="tipoMovimiento" collection-type="java.util.Collection" connected-entity-id="_1416425329603" connected-attribute-id="_141642536492047" id="_141642536492048">
+                <jpa:join-table/>
+            </jpa:one-to-many>
         </jpa:attributes>
     </jpa:entity>
     <jpa:entity class="Movimiento" minimized="false" id="_1416425329603">
         <jpa:table name="movimiento"/>
         <jpa:attributes>
-            <jpa:id name="id1" attribute-type="Long" id="_141642535071243">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            <jpa:id name="codigo" attribute-type="String" id="_141642535071243">
+                <jpa:column name="codigo" unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+                <jpa:generated-value/>
             </jpa:id>
-            <jpa:basic name="attribute1" attribute-type="String" id="_141642535125944"/>
-            <jpa:basic name="attribute2" attribute-type="String" id="_141642535143245"/>
-            <jpa:basic name="attribute3" attribute-type="String" id="_141642535162746"/>
-            <jpa:many-to-one name="tipoMovimiento1" target-entity="TipoMovimiento" optional="true" primaryKey="false" connected-entity-id="_1416424235294" connected-attribute-id="_141642536492048" id="_141642536492047">
+            <jpa:basic name="descripcion" attribute-type="String" id="_141642535125944">
+                <jpa:column name="descripcion" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaEsSaludTrabEmpl" attribute-type="Boolean" id="_141642535143245">
+                <jpa:column name="afecta_essalud_trab_empl" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaSctrEmpl" attribute-type="Boolean" id="_141642535162746">
+                <jpa:column name="afecta_sctr_empl" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaSnpTrab" attribute-type="Boolean" id="_141661105907540">
+                <jpa:column name="afecta_snp_trab" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaSenatiEmpl" attribute-type="Boolean" id="_141661105946841">
+                <jpa:column name="afecta_senati_empl" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaSppTrab" attribute-type="Boolean" id="_141661105982842">
+                <jpa:column name="afecta_spp_trab" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaRentaQuintaTrab" attribute-type="Boolean" id="_141661106015843">
+                <jpa:column name="afecta_rentaquinta_trab" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="afectaEsSaludPensPens" attribute-type="Boolean" id="_141661118840644">
+                <jpa:column name="afecta_essaludpens_pens" unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:many-to-one name="tipoMovimiento" target-entity="TipoMovimiento" optional="true" primaryKey="false" connected-entity-id="_1416424235294" connected-attribute-id="_141642536492048" id="_141642536492047">
+                <jpa:join-column name="tipo_movimiento_id" referenced-column-name="codigo" unique="false" nullable="true" insertable="true" updatable="true" column-definition="" table=""/>
                 <jpa:join-table/>
             </jpa:many-to-one>
+            <jpa:one-to-many name="conceptoList" target-entity="Concepto" mapped-by="movimiento" collection-type="java.util.Collection" connected-entity-id="_1415987424761" connected-attribute-id="_141661171615747" id="_141661171616748">
+                <jpa:join-table/>
+            </jpa:one-to-many>
         </jpa:attributes>
     </jpa:entity>
     <jpa:diagram id="_14150356077412">
         <plane elementRef="_14150356077411" id="_14150356077413_p">
             <shape elementRef="_1415035623312" id="_1415035623312_gui">
-                <Bounds x="19.0" y="-113.0" width="189.0" height="158.0"/>
+                <Bounds x="19.0" y="-113.0" width="169.0" height="168.0"/>
             </shape>
             <shape elementRef="_1415036031241" id="_1415036031241_gui">
-                <Bounds x="781.0" y="86.0" width="162.0" height="118.0"/>
+                <Bounds x="781.0" y="86.0" width="149.0" height="126.0"/>
             </shape>
             <shape elementRef="_1415036064146" id="_1415036064146_gui">
-                <Bounds x="691.0" y="245.0" width="252.0" height="138.0"/>
+                <Bounds x="691.0" y="245.0" width="220.0" height="147.0"/>
             </shape>
             <shape elementRef="_1415036185670" id="_1415036185670_gui">
-                <Bounds x="19.0" y="86.0" width="259.0" height="198.0"/>
+                <Bounds x="19.0" y="86.0" width="226.0" height="210.0"/>
             </shape>
             <shape elementRef="_1415036329626" id="_1415036329626_gui">
-                <Bounds x="46.0" y="349.0" width="269.0" height="198.0"/>
+                <Bounds x="46.0" y="349.0" width="236.0" height="210.0"/>
             </shape>
             <shape elementRef="_1415036688797" id="_1415036688797_gui">
-                <Bounds x="387.0" y="361.0" width="252.0" height="198.0"/>
+                <Bounds x="387.0" y="361.0" width="222.0" height="210.0"/>
             </shape>
             <shape elementRef="_1415036740460" id="_1415036740460_gui">
-                <Bounds x="390.0" y="-113.0" width="230.0" height="378.0"/>
+                <Bounds x="390.0" y="-113.0" width="216.0" height="399.0"/>
             </shape>
             <shape elementRef="_1415037782473" id="_1415037782473_gui">
-                <Bounds x="778.0" y="-113.0" width="165.0" height="158.0"/>
+                <Bounds x="778.0" y="-113.0" width="152.0" height="168.0"/>
             </shape>
             <shape elementRef="_1415060714798" id="_1415060714798_gui">
-                <Bounds x="681.0" y="424.0" width="265.0" height="138.0"/>
+                <Bounds x="681.0" y="424.0" width="233.0" height="147.0"/>
             </shape>
             <shape elementRef="_1415061556778" id="_1415061556778_gui">
-                <Bounds x="-255.0" y="349.0" width="242.0" height="218.0"/>
+                <Bounds x="-255.0" y="349.0" width="216.0" height="231.0"/>
             </shape>
             <shape elementRef="_1415061799708" id="_1415061799708_gui">
-                <Bounds x="-255.0" y="108.0" width="220.0" height="198.0"/>
+                <Bounds x="-255.0" y="108.0" width="203.0" height="210.0"/>
             </shape>
             <shape elementRef="_1415984257466" id="_1415984257466_gui">
-                <Bounds x="210.0" y="-474.0" width="199.0" height="238.0"/>
+                <Bounds x="210.0" y="-474.0" width="180.0" height="252.0"/>
             </shape>
             <shape elementRef="_1415986447186" id="_1415986447186_gui">
-                <Bounds x="-107.0" y="-694.0" width="167.0" height="318.0"/>
+                <Bounds x="-107.0" y="-694.0" width="156.0" height="336.0"/>
             </shape>
             <shape elementRef="_1415986785010" id="_1415986785010_gui">
-                <Bounds x="505.0" y="-453.0" width="199.0" height="238.0"/>
+                <Bounds x="505.0" y="-453.0" width="176.0" height="252.0"/>
             </shape>
             <shape elementRef="_1415987424761" id="_1415987424761_gui">
-                <Bounds x="210.0" y="-838.0" width="185.0" height="298.0"/>
+                <Bounds x="210.0" y="-838.0" width="171.0" height="336.0"/>
             </shape>
             <shape elementRef="_1415988577276" id="_1415988577276_gui">
-                <Bounds x="484.0" y="-838.0" width="220.0" height="158.0"/>
+                <Bounds x="484.0" y="-838.0" width="197.0" height="168.0"/>
             </shape>
             <shape elementRef="_1416424235294" id="_1416424235294_gui">
-                <Bounds x="745.0" y="-804.0" width="207.0" height="158.0"/>
+                <Bounds x="210.0" y="-1027.0" width="185.0" height="126.0"/>
             </shape>
             <shape elementRef="_1416425329603" id="_1416425329603_gui">
-                <Bounds x="745.0" y="-569.0" width="177.0" height="158.0"/>
+                <Bounds x="-107.0" y="-1053.0" width="188.0" height="294.0"/>
             </shape>
         </plane>
     </jpa:diagram>

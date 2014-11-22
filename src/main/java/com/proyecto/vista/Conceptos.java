@@ -395,7 +395,7 @@ public class Conceptos extends javax.swing.JInternalFrame {
             cmbTipo.setSelectedItem(concepto.getTipo());
             cmbColumnaBoleta.setSelectedItem(concepto.getColumnaBoleta());
 //            concepto asociado??
-            chckARC.setSelected(concepto.isAfectaRemComp());
+            chckARC.setSelected(concepto.getAfectaRemComp());
             chckPLAME.setSelected(concepto.isAfectaPlame());
 
 //            cmbTipoMovimiento.setSelectedItem(concepto.getTipoMovimiento());

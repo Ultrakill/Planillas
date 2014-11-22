@@ -23,14 +23,19 @@ public  class Concepto implements Serializable {
     private Collection<ReservaConcepto> reservaConceptoList;
 
 
-    @Column(name="orden")
+    @Column(name="eliminado")
     @Basic
-    private Integer orden;
+    private Boolean eliminado;
 
 
-    @Column(name="nombre")
+    @Column(name="descripcion")
     @Basic
-    private String nombre;
+    private String descripcion;
+
+
+    @Column(name="afecta_plame")
+    @Basic
+    private Boolean afectaPlame;
 
 
     @Column(name="id",nullable=false)
@@ -39,9 +44,14 @@ public  class Concepto implements Serializable {
     private Long id;
 
 
-    @Column(name="columna_boleta")
+    @Column(name="nombre")
     @Basic
-    private String columnaBoleta;
+    private String nombre;
+
+
+    @Column(name="orden")
+    @Basic
+    private Integer orden;
 
 
     @Column(name="abreviatura")
@@ -49,9 +59,9 @@ public  class Concepto implements Serializable {
     private String abreviatura;
 
 
-    @Column(name="eliminado")
+    @Column(name="columna_boleta")
     @Basic
-    private Boolean eliminado;
+    private String columnaBoleta;
 
 
     @Column(name="tipo")
@@ -59,24 +69,19 @@ public  class Concepto implements Serializable {
     private String tipo;
 
 
-    @Column(name="descripcion")
-    @Basic
-    private String descripcion;
-
-
     @ManyToOne(targetEntity=Concepto.class)
     @JoinColumn(name="concepto_asociado",referencedColumnName="id",insertable=true,nullable=true,unique=false,updatable=true)
     private Concepto conceptoAsociado;
 
 
+    @ManyToOne(targetEntity=Movimiento.class)
+    @JoinColumn(name="movimiento_id",referencedColumnName="codigo",insertable=true,nullable=true,unique=false,updatable=true)
+    private Movimiento movimiento;
+
+
     @Column(name="afecta_rem_comp")
     @Basic
     private Boolean afectaRemComp;
-
-
-    @Column(name="afecta_plame")
-    @Basic
-    private Boolean afectaPlame;
 
     public Concepto(){
 
@@ -94,61 +99,6 @@ public  class Concepto implements Serializable {
 
 
 
-   public Integer getOrden() {
-        return this.orden;
-    }
-
-
-  public void setOrden (Integer orden) {
-        this.orden = orden;
-    }
-
-
-
-   public String getNombre() {
-        return this.nombre;
-    }
-
-
-  public void setNombre (String nombre) {
-        this.nombre = nombre;
-    }
-
-
-
-   public Long getId() {
-        return this.id;
-    }
-
-
-  public void setId (Long id) {
-        this.id = id;
-    }
-
-
-
-   public String getColumnaBoleta() {
-        return this.columnaBoleta;
-    }
-
-
-  public void setColumnaBoleta (String columnaBoleta) {
-        this.columnaBoleta = columnaBoleta;
-    }
-
-
-
-   public String getAbreviatura() {
-        return this.abreviatura;
-    }
-
-
-  public void setAbreviatura (String abreviatura) {
-        this.abreviatura = abreviatura;
-    }
-
-
-
     public Boolean isEliminado() {
         return this.eliminado;
     }
@@ -156,17 +106,6 @@ public  class Concepto implements Serializable {
 
   public void setEliminado (Boolean eliminado) {
         this.eliminado = eliminado;
-    }
-
-
-
-   public String getTipo() {
-        return this.tipo;
-    }
-
-
-  public void setTipo (String tipo) {
-        this.tipo = tipo;
     }
 
 
@@ -182,6 +121,83 @@ public  class Concepto implements Serializable {
 
 
 
+    public Boolean isAfectaPlame() {
+        return this.afectaPlame;
+    }
+
+
+  public void setAfectaPlame (Boolean afectaPlame) {
+        this.afectaPlame = afectaPlame;
+    }
+
+
+
+   public Long getId() {
+        return this.id;
+    }
+
+
+  public void setId (Long id) {
+        this.id = id;
+    }
+
+
+
+   public String getNombre() {
+        return this.nombre;
+    }
+
+
+  public void setNombre (String nombre) {
+        this.nombre = nombre;
+    }
+
+
+
+   public Integer getOrden() {
+        return this.orden;
+    }
+
+
+  public void setOrden (Integer orden) {
+        this.orden = orden;
+    }
+
+
+
+   public String getAbreviatura() {
+        return this.abreviatura;
+    }
+
+
+  public void setAbreviatura (String abreviatura) {
+        this.abreviatura = abreviatura;
+    }
+
+
+
+   public String getColumnaBoleta() {
+        return this.columnaBoleta;
+    }
+
+
+  public void setColumnaBoleta (String columnaBoleta) {
+        this.columnaBoleta = columnaBoleta;
+    }
+
+
+
+   public String getTipo() {
+        return this.tipo;
+    }
+
+
+  public void setTipo (String tipo) {
+        this.tipo = tipo;
+    }
+
+
+
    public Concepto getConceptoAsociado() {
         return this.conceptoAsociado;
     }
@@ -193,24 +209,24 @@ public  class Concepto implements Serializable {
 
 
 
-    public Boolean isAfectaRemComp() {
+   public Movimiento getMovimiento() {
+        return this.movimiento;
+    }
+
+
+  public void setMovimiento (Movimiento movimiento) {
+        this.movimiento = movimiento;
+    }
+
+
+
+    public Boolean getAfectaRemComp() {
         return this.afectaRemComp;
     }
 
 
   public void setAfectaRemComp (Boolean afectaRemComp) {
         this.afectaRemComp = afectaRemComp;
-    }
-
-
-
-    public Boolean isAfectaPlame() {
-        return this.afectaPlame;
-    }
-
-
-  public void setAfectaPlame (Boolean afectaPlame) {
-        this.afectaPlame = afectaPlame;
     }
 
 }
