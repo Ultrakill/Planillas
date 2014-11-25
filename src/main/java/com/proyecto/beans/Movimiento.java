@@ -194,5 +194,10 @@ public  class Movimiento implements Serializable {
         this.afectaEsSaludTrabEmpl = afectaEsSaludTrabEmpl;
     }
 
+    @Override
+    public String toString() {
+        return descripcion;
+    } 
+
 }
 

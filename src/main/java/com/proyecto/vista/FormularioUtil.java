@@ -162,7 +162,7 @@ public class FormularioUtil {
         if (component instanceof JComboBox) {
             ((JComboBox) component).removeAllItems();
         } else if (component instanceof JTextComponent) {
-            ((JTextComponent) component).setText("");
+            ((JTextComponent) component).setText(null);
         } else if (component instanceof JDateChooser) {
             ((JDateChooser) component).setDate(null);
         } else if (component instanceof JPanel) {

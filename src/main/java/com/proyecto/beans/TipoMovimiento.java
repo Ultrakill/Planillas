@@ -64,5 +64,11 @@ public  class TipoMovimiento implements Serializable {
         this.movimientoList = movimientoList;
     }
 
+    @Override
+    public String toString() {
+        return descripcion;
+    }
+  
+
 }
 

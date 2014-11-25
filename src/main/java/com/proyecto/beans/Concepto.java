@@ -229,5 +229,12 @@ public  class Concepto implements Serializable {
         this.afectaRemComp = afectaRemComp;
     }
 
+    @Override
+    public String toString() {
+        return abreviatura;
+    }
+  
+  
+
 }
 

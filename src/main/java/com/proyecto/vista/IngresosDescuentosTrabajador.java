@@ -15,8 +15,18 @@ public class IngresosDescuentosTrabajador extends javax.swing.JInternalFrame {
     /**
      * Creates new form IngresosDescuentosTrabajador
      */
+    
+    private static IngresosDescuentosTrabajador instancia;
+    
     public IngresosDescuentosTrabajador() {
         initComponents();
+    }
+    
+    public static IngresosDescuentosTrabajador getInstancia() {
+        if (instancia == null) {
+            instancia = new IngresosDescuentosTrabajador();
+        }
+        return instancia;
     }
 
     /**
@@ -139,12 +149,13 @@ public class IngresosDescuentosTrabajador extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                        .addComponent(jCheckBox1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
