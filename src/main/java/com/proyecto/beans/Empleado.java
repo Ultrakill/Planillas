@@ -99,5 +99,12 @@ public  class Empleado implements Serializable {
         this.contrato = contrato;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+  
+  
+
 }
 

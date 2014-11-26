@@ -5,6 +5,7 @@
  */
 package com.proyecto.vista;
 
+import com.proyecto.beans.Contrato;
 import com.proyecto.beans.PorcentajeAFP;
 import com.proyecto.beans.RegimenPensionario;
 import java.util.ArrayList;
@@ -17,13 +18,13 @@ import javax.swing.table.AbstractTableModel;
  */
 public class MiTabla extends AbstractTableModel {
 
-    List<PorcentajeAFP> lista = new ArrayList<>();    
+    List<Contrato> lista = new ArrayList<>();    
     private static final String[] columnas = {"% Fondo \n pensión", "% Seguro \n invalidéz", "% Comisión \n flujo", "% Comisión \n mixta", "S/. Tope \n prima"};
 
     public MiTabla() {
     }
 
-    public MiTabla(List<PorcentajeAFP> lista) {
+    public MiTabla(List<Contrato> lista) {
         this.lista = lista;
     }
 
@@ -46,9 +47,10 @@ public class MiTabla extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                lista.get(rowIndex).getFondoPension();
+                lista.get(rowIndex).getEmpleado().getNombre();
             case 1:
-                lista.get(rowIndex).getSeguroInvalidez();
+                
+                lista.get(rowIndex).getPeriodoRegimenPensionList();
             case 2:
                 lista.get(rowIndex).getComisionRemFlujo();
             case 3:
