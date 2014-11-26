@@ -5,6 +5,7 @@
  */
 package com.proyecto.control;
 
+import com.proyecto.beans.Contrato;
 import com.proyecto.beans.PeriodoRegimenPension;
 import java.util.HashMap;
 import java.util.List;
@@ -26,5 +27,10 @@ public class PeriodoRegimenPensionControlador extends AbstractControlador<Period
         return this.getDao().buscar(jpql, parametros);
     }
     
-    
+    public List<PeriodoRegimenPension> buscarXContrato(Contrato contrato) {
+        String jpql = "SELECT a FROM PeriodoRegimenPension a WHERE a.contrato = :contrato" ;
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("contrato", contrato);
+        return this.getDao().buscar(jpql, parametros);
+    }
 }

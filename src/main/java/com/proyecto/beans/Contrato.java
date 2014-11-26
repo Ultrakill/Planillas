@@ -1,9 +1,9 @@
 package com.proyecto.beans;
 
 import java.io.Serializable;
-
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public  class Contrato implements Serializable {
 
 
     @OneToMany(targetEntity=PeriodoTipoTrabajador.class,mappedBy="contrato")
-    private Collection<PeriodoTipoTrabajador> periodoTipoTrabajadorList;
+    private List<PeriodoTipoTrabajador> periodoTipoTrabajadorList;
 
 
     @Column(name="vida",nullable=false)
@@ -53,7 +53,7 @@ public  class Contrato implements Serializable {
 
 
     @OneToMany(targetEntity=PeriodoRegimenSalud.class,mappedBy="contrato")
-    private Collection<PeriodoRegimenSalud> periodoRegimenSaludList;
+    private List<PeriodoRegimenSalud> periodoRegimenSaludList;
 
 
     @Column(name="sueldo_base",nullable=false)
@@ -66,7 +66,7 @@ public  class Contrato implements Serializable {
 
 
     @OneToMany(targetEntity=PeriodoRegimenPension.class,mappedBy="contrato")
-    private Collection<PeriodoRegimenPension> periodoRegimenPensionList;
+    private List<PeriodoRegimenPension> periodoRegimenPensionList;
 
 
     @Column(name="id",unique=true,nullable=false)
@@ -105,12 +105,12 @@ public  class Contrato implements Serializable {
     }
 
 
-   public Collection<PeriodoTipoTrabajador> getPeriodoTipoTrabajadorList() {
+   public List<PeriodoTipoTrabajador> getPeriodoTipoTrabajadorList() {
         return this.periodoTipoTrabajadorList;
     }
 
 
-  public void setPeriodoTipoTrabajadorList (Collection<PeriodoTipoTrabajador> periodoTipoTrabajadorList) {
+  public void setPeriodoTipoTrabajadorList (List<PeriodoTipoTrabajador> periodoTipoTrabajadorList) {
         this.periodoTipoTrabajadorList = periodoTipoTrabajadorList;
     }
 
@@ -171,12 +171,12 @@ public  class Contrato implements Serializable {
 
 
 
-   public Collection<PeriodoRegimenSalud> getPeriodoRegimenSaludList() {
+   public List<PeriodoRegimenSalud> getPeriodoRegimenSaludList() {
         return this.periodoRegimenSaludList;
     }
 
 
-  public void setPeriodoRegimenSaludList (Collection<PeriodoRegimenSalud> periodoRegimenSaludList) {
+  public void setPeriodoRegimenSaludList (List<PeriodoRegimenSalud> periodoRegimenSaludList) {
         this.periodoRegimenSaludList = periodoRegimenSaludList;
     }
 
@@ -204,12 +204,12 @@ public  class Contrato implements Serializable {
 
 
 
-   public Collection<PeriodoRegimenPension> getPeriodoRegimenPensionList() {
+   public List<PeriodoRegimenPension> getPeriodoRegimenPensionList() {
         return this.periodoRegimenPensionList;
     }
 
 
-  public void setPeriodoRegimenPensionList (Collection<PeriodoRegimenPension> periodoRegimenPensionList) {
+  public void setPeriodoRegimenPensionList (List<PeriodoRegimenPension> periodoRegimenPensionList) {
         this.periodoRegimenPensionList = periodoRegimenPensionList;
     }
 

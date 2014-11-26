@@ -596,7 +596,9 @@ public class MantenimientoContrato extends javax.swing.JInternalFrame {
                 contratoControlador.getSeleccionado().setPeriodicidad(cmbPeriodicidad.getSelectedItem().toString());
                 contratoControlador.getSeleccionado().setMotivoBajaTrabajador((MotivoBajaTrabajador) cmbMotivoBaja.getSelectedItem());
 
-                //PERIODO DEL TIPO DE TRABAJADOR
+                contratoControlador.accion(accion);
+                
+                 //PERIODO DEL TIPO DE TRABAJADOR
                 PeriodoTipoTrabajador periodoTrabajador = new PeriodoTipoTrabajador();
 
                 PeriodoTipoTrabajadorControlador pt = new PeriodoTipoTrabajadorControlador();
@@ -608,10 +610,10 @@ public class MantenimientoContrato extends javax.swing.JInternalFrame {
                 pt.getSeleccionado().setNombre(((TipoTrabajador) cmbTipoTrabajador.getSelectedItem()).getDescripcion());
                 pt.getSeleccionado().setTipoTrabajador(((TipoTrabajador) cmbTipoTrabajador.getSelectedItem()));
                 pt.getSeleccionado().setVigente(true);
+                pt.getSeleccionado().setContrato(contratoControlador.getSeleccionado());
 
 //                contratoControlador.getSeleccionado().setPeriodoTipoTrabajador(periodoTrabajador);
                 //PERIODO DEL REGIMEN DE PENSION
-                System.out.println("fecha fin: " + jdateFinal.getDate());
                 PeriodoRegimenPension regimenPension = new PeriodoRegimenPension();
 
                 PeriodoRegimenPensionControlador rp = new PeriodoRegimenPensionControlador();
@@ -620,10 +622,10 @@ public class MantenimientoContrato extends javax.swing.JInternalFrame {
 
                 rp.getSeleccionado().setFechaInicio(jdateInicial.getDate());
                 rp.getSeleccionado().setFechaFin(jdateFinal.getDate());
-                System.out.println("FECHA FIN ::: " + rp.getSeleccionado().getFechaFin());
                 rp.getSeleccionado().setNombre(((RegimenPensionario) cmbRegimenPension.getSelectedItem()).getDescripcion());
                 rp.getSeleccionado().setRegimenPensionario((RegimenPensionario) cmbRegimenPension.getSelectedItem());
                 rp.getSeleccionado().setVigente(true);
+                rp.getSeleccionado().setContrato(contratoControlador.getSeleccionado());
 
 //                contratoControlador.getSeleccionado().setPeriodoRegimenPension(regimenPension);
                 //PERIODO DEL REGIMEN DE SALUD
@@ -638,10 +640,8 @@ public class MantenimientoContrato extends javax.swing.JInternalFrame {
                 rs.getSeleccionado().setNombre(((RegimenAseguramiento) cmbRegimenSalud.getSelectedItem()).getNombre());
                 rs.getSeleccionado().setRegimenAseguramiento((RegimenAseguramiento) cmbRegimenSalud.getSelectedItem());
                 rs.getSeleccionado().setVigente(true);
-
-//                contratoControlador.getSeleccionado().setPeriodoRegimenSalud(regimenSalud);
-                contratoControlador.accion(accion);
-
+                rs.getSeleccionado().setContrato(contratoControlador.getSeleccionado());
+                
                 //CONTRATO - > PERIODO REGIMEN SALUD
                 rs.accion(accion);
 
@@ -652,6 +652,7 @@ public class MantenimientoContrato extends javax.swing.JInternalFrame {
                 pt.accion(accion);
 
                 lista.add(contratoControlador.getSeleccionado());
+                listar();
 
                 if (accion == 1) {
                     JOptionPane.showMessageDialog(null, "Contrato " + palabra2 + " correctamente", "Mensaje del Sistema", JOptionPane.INFORMATION_MESSAGE);
